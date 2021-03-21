@@ -201,6 +201,7 @@ master common problem solving patterns:
         with arrays / strings
 
         an example of a frequency counter function is in the test.js file 
+    
     2. Multiple Pointers:
         this pattern works by creating pointers or values that
         correspond to an index or position and move towards the 
@@ -208,3 +209,14 @@ master common problem solving patterns:
 
         this pattern is also very Efficent for solving problems with
         minimal space Complexity as well
+
+    3. Sliding Window:
+        this pattern involves creating a window which can either be an array
+        or a number from one position to another.
+        Depending on a certain condition, the window either increases or closes (and a new window is created)
+        Very useful for keeping track of a subset of data in an array/string ect.
+    
+    4. devide and conquer:
+        This pattern involves deviding a data set into smaller chunks and then repeating
+        a process with a subset of data.
+        This pattern tremendously decreases time complexity

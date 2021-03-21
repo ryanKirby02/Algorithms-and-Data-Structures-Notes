@@ -73,18 +73,23 @@ const multiplePointers2 = (arr) => {
 
 console.log(multiplePointers2([-4, -3, -2, 0, 1, 3, 5, 7, 8]));
 
-var findLucky = function (arr) {
-  // init an anwser array
-  let lookupNumbers = {};
-  // loop threw the arr and sort the numbers
-  for (let number of arr) {
-    lookupNumbers[number]
-      ? (lookupNumbers[number] += 1)
-      : (lookupNumbers[number] = 0);
+//this is an example of a sliding window method, it allows us to use only loop threw the array once. which makes it O(n) liner
+//instead of O(n>2)
+const maxSubarraySum = (arr, n) => {
+  let maxSum = 0;
+  let tempSum = 0;
+  if(n > arr.length) {
+    return null;
   }
-  return lookupNumbers;
-  // check to see if a number repeted the amount = to the number
-  //if there is one return it if there isnt one return -1
-};
+  for(let i = 0; i < n; i++){
+    maxSum += arr[i]
+  }
+  tempSum = maxSum
+  for(let i = n; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - n] + arr[i]
+    maxSum = Math.max(maxSum, tempSum)
+  }
+  return maxSum
+}
 
-console.log(findLucky([4, 5, 6, 3, 2, 2, 8, 8, 4]));
+console.log(maxSubarraySum([1,5,3,8,7,6,4,6,9,8,3,1,4,7,6,5,4,2,1,3,6,7], 3))
