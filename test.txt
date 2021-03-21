@@ -1,0 +1,210 @@
+LESSON 1:
+
+Big O Notation is one of the most important things to learn...
+
+Objectives:
+ Motivate the need for something like big O Notation
+ Describe what Big o Notation is
+ Simplify Big O expresstions
+ Define time Complexity and space Complexity
+ evaliate the time Complexity and space Complexity of different algorithms using big o Notation
+ describe what a logarithm is
+
+big o is a system to compare code and see what is faster.
+
+using performance.now() is unrealiable for many reasons:
+    the time can differ alot between different pcs or laptops
+    even the same pc or laptop will record different times.
+    for fast algorithms, performance.now() just isnt precise enough.
+
+if we dont use performance.now(), what do we use? well, rather then counting seconds which are so variable
+we can count the number of simple operations the computer has to prefrom.
+
+Big O Notation is a way to formalize fuzzy counting. it allows us to talk formally about how the run time
+of an algorithm grows as the input grows.
+
+we say that an algorithm is O(f(n)) if the number of simple operations the computer has to do is eventually less than 
+a constant times f(n), as n increases:
+    f(n) could be linear (f(n) = n)
+    f(n) could be quadratic (f(n) = n(2))
+    f(n) could be constant (f(n) = 1)
+    f(n) could also be something entirely different!
+
+Simplifying Big O expresstions:
+
+when determining the time Complexity of an algorithm, there are some helpful rules of thumb for big O expresstions
+these rules are consequences of the definition of Big O Notation:
+
+    constants dont matter, meaning if we have a run time of O(2n) that get Simplifyed to O(n);
+    same goes for O(500), that get Simplifyed down to O(1);
+    once again same goes for O(13n>2) it gets Simplifed down to O(n>2)
+    more examples:
+        O(n + 10) => O(n)
+        O(1000n + 50) => O(n)
+        O(n>2 + 5n + 8) => O(n>2)
+
+    we Simplify down because Big O is showing the increase in runtime based on the increase of n.
+
+    Big O Shorthands:
+        1. arithmetic operations are constant
+        2. variable assignment is constant
+        3. Accessing elements in a array(by index) or object(by key) is constant
+        4. In a loop, the Complexity is the length of the loop times the Complexity of whatever is inside.
+
+everything that was just went over is called time Complexity, i.e the amount of time it takes the computer to do a task.
+Now we are going over space Complexity, which will tell us how much memory a task takes up. we can still use Big O Notations for this.
+
+the term auxiliary space Complexity is used to show the amount of memory used by only the algorithm, not by the inputs.
+
+Space Complexity in JS rules of thumb:
+    1. Most primitives(i.e booleans, numbers, undefined, null) are constant space
+    2. Strings require O(n) space where n is the length of the String
+    3. Reference types are generally O(n) where n is the length(for arrays) or the number of keys(for objects)
+
+the most common complexities are O(1), O(n) O(n>2).
+sometimes big O expresstions involve more complex math, and one that appears more than I might like is Logarithms.
+
+if you get a time Complexity of O(log n) that is great, it is pretty close to O(1) on a chart.
+
+there are three main algorithms that often use a Complexity of either O(log n) or O(nlog n):
+    1. searching algorithms
+    2. Efficent sorting algorithms
+    3. Recursion algorithms
+
+LESSON 2
+
+OBJECTIVES:
+    Understand how objects and arrays work through the lens of Big O 
+    Explain why adding elements to the beginning of an array is costly
+    conpare and contrast the runtime for arrays and objects, as well as built in methods
+
+use objects when you dont need order, and when you need fast access/insertion and removal.
+
+the Big O of Objects = {
+    Insertion: O(1),
+    Removal: O(1),
+    Searching: O(n),
+    Access: O(1)
+}
+
+Big O of Object Methods = {
+    Object.keys: O(n),
+    Object.values: O(n),
+    Object.entries: O(n),
+    hasOwnProperty: O(1)
+}
+
+use arrays when you need order in your data, an array is slow if you need to insert/remove data in the beginning on an array.
+
+the Big O of arrays = {
+    Insertion: if at end O(1) if at the beginning = O(n),
+    Removal: if at end O(1) if at beginning O(n),
+    Searching: O(n),
+    Access: O(1)
+}
+
+the Big O of arrays Operations = {
+    push: O(1),
+    pop: O(1),
+    shift: O(n),
+    unshift: O(n),
+    concat: O(n),
+    slice: O(n),
+    splice: O(n),
+    sort: O(nlog n),
+    forEach/map/filter/reduce/ect: O(n),
+}
+
+LESSON 3:
+
+OBJECTIVES:
+    1. Define what an algorithm is
+    2. Devise a plan to solve algorithm
+    3. Compare and contrast problem solving patterns including frequency counters, two pointer problems and devide and conquer
+
+An algorithm is a process or set of steps to accomplish a certain set of tasks.
+
+Almost everything that you do as a programmer involves some kind of algorithm!
+Its the foundation for being a successful problem solver and developer.
+
+So, you may ask, how do you improve?
+    1. devise a plan for solving problems
+    2. master common problem solving patterns
+
+the steps to solve a programming problem are:
+    1. understand the problem
+    2. explore concrete examples
+    3. break it down
+    4. solve/Simplify
+    5. look back and refactor
+
+1. Understanding the problem:
+
+    always start by asking yourself or your interviewer these questions:
+        1. can i restate the problem in my own words
+        2. what are the inputs that go into the problem
+        3. what are the outputs that should come from the solution of the problem
+        4. Can the outputs be determined from the inputs? in other words,
+         do i have enough information to solve the problem? (you might not
+         be able to answer this question until you set about solving the problem. That's ok;
+         its still worth considering the question at this early stage. )
+        5. how should i label the important pieces of data that are part of the problem.
+
+2. explore examples:
+    Coming up with examples can help you understand the problem better.
+    Examples also provide sanity checks tht your eventual solution works how it should
+
+    always explore examples using these steps:
+        1. start with simple examples
+        2. progress to more complex examples
+        3. explore examples with empty inputs
+        4. explore examples with invalid Inputs.
+
+3. Break it Down:
+    Explicitly write out the steps you need to take:
+        this forces you to think about the code you will write before you write it,
+        and helps you to catch any lingering conceptual issues or misunderstandings
+        before you dive in and have to worry about the details (e.g. language syntax) as well.
+
+4. Solve/Simplify:
+    solve the problem if you can, or solve a simpler problem.
+    the steps of Simplifying a problem are:
+        1. find the core difficulty in what you are trying to do.
+        2. temporarily ignore that difficulty
+        3. write a Simplified solution
+        4. then incorporate that difficulty back in if you can
+
+5. look back and refactor:
+    questions you should ask yourself:
+        1. can i chekc my result
+        2. can i derive the result differently
+        3. can i understand it at a glance
+        4. can you use the result or method for some other problem
+        5. can i improve the performance of ny solution
+        6. can i think of other ways to refactor 
+        7. how have other people solved the problem
+
+master common problem solving patterns:
+        here are a few common problem solving patterns:
+            1. frequency counters
+            2. Multiple Pointers
+            3. Sliding Window
+            4. Devide and Conquer 
+            5. Dynamic Programming 
+            6. Greedy algorithms
+            7. Backtracking
+            8. Many more
+
+    1. frequency Counter:
+        This pattern uses objects or sets to collect values/frequencies of values
+        This can often avoid the need for nested loops or O(n>2) operations
+        with arrays / strings
+
+        an example of a frequency counter function is in the test.js file 
+    2. Multiple Pointers:
+        this pattern works by creating pointers or values that
+        correspond to an index or position and move towards the 
+        beginning end or middle based on a certain condition
+
+        this pattern is also very Efficent for solving problems with
+        minimal space Complexity as well
